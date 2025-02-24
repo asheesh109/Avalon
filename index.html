@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Timeline</title>
+    <style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d0d1a;
+            color: white;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+       
+        .main-title {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            color: #00ff99;
+            text-shadow: 2px 2px 10px rgba(0, 255, 153, 0.5);
+        }
+
+        
+
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 50px auto 30px;
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            width: 50%;
+            text-transform: uppercase;
+            text-align: center;
+            box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        
+        .timeline-item {
+            width: 80%;
+            max-width: 350px;
+            margin: 20px 0;
+            opacity: 0;
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+        }
+
+        
+        .timeline-item:nth-child(odd) {
+            transform: translateX(-150px);
+            align-self: flex-start;
+        }
+
+        .timeline-item:nth-child(even) {
+            transform: translateX(150px);
+            align-self: flex-end;
+        }
+
+        
+        .timeline-item.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        
+        .content {
+            background: linear-gradient(to right, #00ff99, #0077ff);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 12px rgba(0, 255, 153, 0.4);
+            text-align: center;
+            font-size: 16px;
+            height: 100px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        
+        h2 {
+            font-size: 18px;
+            margin: 0 0 5px;
+        }
+
+       
+        p {
+            font-size: 14px;
+            margin: 0;
+        }
+        .countdown-button {
+            margin-top: 50px;
+            padding: 15px 30px;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(to right, #0077ff, #00ff99);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0px 4px 12px rgba(0, 255, 153, 0.5);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="main-title">Timeline</h1>
+
+        
+        <div class="section-title">DAY 1</div>
+        <div class="timeline">
+            <div class="timeline-item"><div class="content"><h2>Inauguration</h2><p>10:00-11:00</p></div></div>
+            <div class="timeline-item"><div class="content"><h2>Introduction to Hackathon</h2><p>11:00-11:30</p></div></div>
+            <div class="timeline-item"><div class="content"><h2>Problem Statement Discussion</h2><p>11:30-12:00</p></div></div>
+            <div class="timeline-item"><div class="content"><h2>Hackathon Kickoff</h2><p>12:00</p></div></div>
+            <div class="timeline-item"><div class="content"><h2>Guidance & Mentorship</h2><p>13:00-13:30</p></div></div>
+            <div class="timeline-item"><div class="content"><h2>Lunch Break</h2><p>14:00-15:00</p></div></div>
+            <div class="timeline-item"><div class="content"><h2>Tech Session 1</h2><p>15:30-16:30</p></div></div>
+            <div class="timeline-item"><div class="content"><h2>Tech Session 2</h2><p>16:45-17:30</p></div></div>
+            <div class="timeline-item"><div class="content"><h2>Networking</h2><p>18:00-19:00</p></div></div>
+            <div class="timeline-item"><div class="content"><h2>End of Day 1</h2><p>19:30</p></div></div>
+        </div>
+
+        
+        <div class="section-title">Day 2 starts </div>
+        <div class="timeline">
+            <div class="timeline-item"><div class="content"><h2>Day 2 Kickoff</h2><p>09:00</p></div></div>
+            <div class="timeline-item"><div class="content"><h2>Morning Session</h2><p>09:30-11:00</p></div></div>
+            <div class="timeline-item"><div class="content"><h2>Mentor Check-in</h2><p>11:30-12:00</p></div></div>
+            <div class="timeline-item"><div class="content"><h2>Final Touches</h2><p>12:30-14:00</p></div></div>
+            <div class="timeline-item"><div class="content"><h2>Project Submission</h2><p>14:30</p></div></div>
+            <div class="timeline-item"><div class="content"><h2>Closing Ceremony</h2><p>15:00-16:00</p></div></div>
+        </div>
+        <a href="./CountDown.html"><button class="countdown-button" id="countdown">CountDown</button></a>
+    </div>
+
+    <script>
+        function revealOnScroll() {
+            let items = document.querySelectorAll(".timeline-item");
+
+            items.forEach((item) => {
+                let rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add("show");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+        window.addEventListener("load", revealOnScroll);
+    </script>
+
+</body>
+</html>
